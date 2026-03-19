@@ -1,7 +1,7 @@
 resource "aws_secretsmanager_secret" "env" {
-  name = "pypicloud_env"
+  name = "sypi_env"
   recovery_window_in_days = 30
-  description = "Secret env vars for the pypicloud Lambda function"
+  description = "Secret env vars for the sypi Lambda function"
 }
 
 resource "aws_secretsmanager_secret_policy" "env" {
@@ -12,7 +12,7 @@ resource "aws_secretsmanager_secret_policy" "env" {
   "Statement" : [ {
     "Effect" : "Allow",
     "Principal" : {
-      "AWS" : "${aws_iam_role.pypicloud.arn}"
+      "AWS" : "${aws_iam_role.sypi.arn}"
     },
     "Action" : [ "secretsmanager:GetSecretValue", "secretsmanager:PutSecretValue" ],
     "Resource" : "*"
@@ -22,9 +22,9 @@ POLICY
 }
 
 resource "aws_secretsmanager_secret" "auth" {
-  name = "pypicloud_auth"
+  name = "sypi_auth"
   recovery_window_in_days = 30
-  description = "pypicloud ACL state"
+  description = "sypi ACL state"
 }
 
 resource "aws_secretsmanager_secret_policy" "auth" {
@@ -35,7 +35,7 @@ resource "aws_secretsmanager_secret_policy" "auth" {
   "Statement" : [ {
     "Effect" : "Allow",
     "Principal" : {
-      "AWS" : "${aws_iam_role.pypicloud.arn}"
+      "AWS" : "${aws_iam_role.sypi.arn}"
     },
     "Action" : [ "secretsmanager:GetSecretValue", "secretsmanager:UpdateSecret" ],
     "Resource" : "*"

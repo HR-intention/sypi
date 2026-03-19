@@ -30,9 +30,9 @@ RUN rm -rf venv/bin venv/share venv/include && \
 
 COPY lambda_function.py .
 
-RUN zip -r9q /tmp/lambda_pypicloud.zip *
+RUN zip -r9q /tmp/lambda_sypi.zip *
 
 # Generate a filesystem image with just the zip file as the output.
 # See: https://docs.docker.com/engine/reference/commandline/build/#custom-build-outputs
 FROM scratch AS export-stage
-COPY --from=build-stage /tmp/lambda_pypicloud.zip /
+COPY --from=build-stage /tmp/lambda_sypi.zip /

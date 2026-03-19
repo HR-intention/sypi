@@ -36,8 +36,8 @@ resource "aws_dynamodb_table" "PackageSummary" {
   }
 }
 
-resource "aws_iam_policy" "pypicloud_dynamo" {
-  name = "pypicloud_dynamo"
+resource "aws_iam_policy" "sypi_dynamo" {
+  name = "sypi_dynamo"
   policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -84,7 +84,7 @@ resource "aws_iam_policy" "pypicloud_dynamo" {
 POLICY
 }
 
-resource "aws_iam_role_policy_attachment" "pypicloud_dynamo" {
-  role = aws_iam_role.pypicloud.name
-  policy_arn = aws_iam_policy.pypicloud_dynamo.arn
+resource "aws_iam_role_policy_attachment" "sypi_dynamo" {
+  role = aws_iam_role.sypi.name
+  policy_arn = aws_iam_policy.sypi_dynamo.arn
 }

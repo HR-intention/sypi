@@ -14,6 +14,6 @@ provider "aws" {
 
 data "aws_caller_identity" "current" {}
 
-resource "aws_cloudwatch_log_group" "pypicloud" {
+resource "aws_cloudwatch_log_group" "sypi" {
   name = var.log_group
 }

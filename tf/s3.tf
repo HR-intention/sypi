@@ -1,12 +1,12 @@
-resource "aws_s3_bucket" "pypicloud" {
+resource "aws_s3_bucket" "sypi" {
   bucket = var.package_bucket
   versioning {
     enabled = true
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "pypicloud" {
-  bucket = aws_s3_bucket.pypicloud.id
+resource "aws_s3_bucket_public_access_block" "sypi" {
+  bucket = aws_s3_bucket.sypi.id
 
   block_public_acls = true
   block_public_policy = true

@@ -1,7 +1,7 @@
 
-default: out/lambda_pypicloud.zip
+default: out/lambda_sypi.zip
 
-out/lambda_pypicloud.zip: Dockerfile lambda_function.py
+out/lambda_sypi.zip: Dockerfile lambda_function.py
 	mkdir -p out && \
 	docker build --target export-stage --output type=local,dest=out .
 

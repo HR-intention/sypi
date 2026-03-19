@@ -1,5 +1,5 @@
-resource "aws_iam_role" "pypicloud" {
-  name = "pypicloud"
+resource "aws_iam_role" "sypi" {
+  name = "sypi"
   path = "/service-role/"
   assume_role_policy = <<POLICY
 {
@@ -17,8 +17,8 @@ resource "aws_iam_role" "pypicloud" {
 POLICY
 }
 
-resource "aws_iam_policy" "pypicloud_rw" {
-  name = "pypicloud_packages_rw"
+resource "aws_iam_policy" "sypi_rw" {
+  name = "sypi_packages_rw"
   policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -43,8 +43,8 @@ resource "aws_iam_policy" "pypicloud_rw" {
 POLICY
 }
 
-resource "aws_iam_policy" "pypicloud_xray" {
-  name = "pypicloud_xray"
+resource "aws_iam_policy" "sypi_xray" {
+  name = "sypi_xray"
   policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -64,17 +64,17 @@ resource "aws_iam_policy" "pypicloud_xray" {
 POLICY
 }
 
-resource "aws_iam_role_policy_attachment" "pypicloud_rw" {
-  role = aws_iam_role.pypicloud.name
-  policy_arn = aws_iam_policy.pypicloud_rw.arn
+resource "aws_iam_role_policy_attachment" "sypi_rw" {
+  role = aws_iam_role.sypi.name
+  policy_arn = aws_iam_policy.sypi_rw.arn
 }
 
 resource "aws_iam_role_policy_attachment" "AWSLambdaBasicExecutionRole" {
-  role = aws_iam_role.pypicloud.name
+  role = aws_iam_role.sypi.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-resource "aws_iam_role_policy_attachment" "pypicloud_xray" {
-  role = aws_iam_role.pypicloud.name
-  policy_arn = aws_iam_policy.pypicloud_xray.arn
+resource "aws_iam_role_policy_attachment" "sypi_xray" {
+  role = aws_iam_role.sypi.name
+  policy_arn = aws_iam_policy.sypi_xray.arn
 }
