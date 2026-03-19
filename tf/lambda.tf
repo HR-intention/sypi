@@ -7,7 +7,7 @@ resource "aws_lambda_function" "sypi" {
   memory_size = "256"
   publish = false
   timeout = "180"
-  runtime = "python3.8"
+  runtime = "python3.9"
 
   environment {
     variables = {
