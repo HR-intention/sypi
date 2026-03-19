@@ -4,11 +4,8 @@ FROM amazonlinux:latest AS build-stage
 RUN yum upgrade -y
 RUN yum install -y gcc gcc-c++ make freetype-devel yum-utils findutils openssl-devel git zip
 
-ARG PYTHON_VERSION_WITH_DOT=3.8
-ARG PYTHON_VERSION_WITHOUT_DOT=38
-
-RUN amazon-linux-extras install -y python${PYTHON_VERSION_WITH_DOT} && \
-	yum install -y python${PYTHON_VERSION_WITHOUT_DOT}-devel
+ARG PYTHON_VERSION_WITH_DOT=3.9
+ARG PYTHON_VERSION_WITHOUT_DOT=39
 
 ARG INSTBASE=/var/task
 

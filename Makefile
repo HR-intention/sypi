@@ -3,6 +3,6 @@ default: out/lambda_pypicloud.zip
 
 out/lambda_pypicloud.zip: Dockerfile lambda_function.py
 	mkdir -p out && \
-	DOCKER_BUILDKIT=1 docker build -o out .
+	docker build --target export-stage --output type=local,dest=out .
 
 .PHONY: default

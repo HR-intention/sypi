@@ -8,3 +8,4 @@ remote-state.tf
 tf/.*.lock.hcl
 
 .vscode/
+.idea/
