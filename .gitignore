@@ -6,6 +6,8 @@ remote-state.tf
 *.auto.tfvars
 
 tf/.*.lock.hcl
+tf/plans/
+tf/*.tfstate
 
 .vscode/
 .idea/
