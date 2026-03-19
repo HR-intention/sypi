@@ -2,7 +2,7 @@
 FROM amazonlinux:latest AS build-stage
 
 RUN yum upgrade -y
-RUN yum install -y gcc gcc-c++ make freetype-devel yum-utils findutils openssl-devel git zip
+RUN yum install -y gcc gcc-c++ make freetype-devel yum-utils findutils openssl-devel git zip openssl
 
 ARG PYTHON_VERSION_WITH_DOT=3.9
 ARG PYTHON_VERSION_WITHOUT_DOT=39
@@ -14,7 +14,9 @@ RUN python${PYTHON_VERSION_WITH_DOT} -m venv venv
 RUN venv/bin/pip install \
 	pypicloud[dynamo] \
 	typing_extensions \
-	apig-wsgi
+	apig_wsgi \
+    cryptography==37.0.4 \
+	"sqlalchemy<2.0"
 
 # Create lambda_venv_path.py
 RUN INSTBASE=${INSTBASE} venv/bin/python -c \
