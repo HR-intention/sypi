@@ -1,2 +1,10 @@
 out
 *.auto.tfvars
+
+.terraform
+remote-state.tf
+*.auto.tfvars
+
+tf/.*.lock.hcl
+
+.vscode/
